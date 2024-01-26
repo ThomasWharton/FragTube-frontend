@@ -1,0 +1,56 @@
+.Header {
+    text-transform: uppercase;
+    font-size: 48px;
+    color: #FF0000;
+    text-align: center;
+    padding: 10px;
+}
+
+.Form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    background-color: #808C8C;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.Input {
+    text-align: center;
+}
+
+.Button {
+    color: #FFF;
+    background-color:#FF0000;
+    border: 1px solid #FF0000;
+    text-transform: uppercase;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+.Button:hover {
+    background-color: #FF0000;
+    border: 1px solid #FFF;
+    cursor: pointer;
+}
+
+.Button:active {
+    background-color: #FF0000 !important;
+}
+
+.Button:hover:active {
+    background-color: #FF0000 !important;
+}
+
+.Button:focus {
+    background-color: #FF0000;
+    box-shadow: none;
+    border: none;
+}
+
+.Alert {
+    background-color: #e4e4e4 !important;
+    text-align: center;
+    color: #FF0000;
+    max-height: 50px;
+}
