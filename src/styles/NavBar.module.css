@@ -15,6 +15,7 @@
     color: #FFFFFF !important;
     padding: 8px;
     font-size: 18px;
+    align-self: center;
 }
 
 .Link:hover {
