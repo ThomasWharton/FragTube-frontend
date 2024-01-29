@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import styles from "../../styles/RegisterLoginForm.module.css";
-import { SetCurrentUserContext } from "../../App";
 
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 const LogInForm = () => {
-  const setCurrentUser = useContext(SetCurrentUserContext);
+  const setCurrentUser = useSetCurrentUser();
 
   const [logInData, setLogInData] = useState({
     username: "",
