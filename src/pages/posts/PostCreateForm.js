@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import styles from "../../styles/PostCreateForm.module.css";
 
-import { Form, Button, Col, Row, Container } from "react-bootstrap";
+import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router";
 
@@ -88,6 +88,11 @@ const PostCreateForm = () => {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {errors.title?.map((message, idx) => (
+                  <Alert className={styles.Alert} varient="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group controlId="category">
                   <Form.Label className={styles.Label}>Game</Form.Label>
@@ -100,6 +105,11 @@ const PostCreateForm = () => {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {errors.category?.map((message, idx) => (
+                  <Alert className={styles.Alert} varient="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group controlId="embedId">
                   <Form.Label className={styles.Label}>Embed ID</Form.Label>
@@ -112,6 +122,11 @@ const PostCreateForm = () => {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {errors.embed_id?.map((message, idx) => (
+                  <Alert className={styles.Alert} varient="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group controlId="content">
                   <Form.Label className={styles.Label}>Content</Form.Label>
