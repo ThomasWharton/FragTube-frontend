@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import styles from "../../styles/PostCreateForm.module.css";
 
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
+import { axiosReq } from "../../api/axiosDefaults";
+import { useHistory } from "react-router";
 
 const PostCreateForm = () => {
   const [errors, setErrors] = useState({});
@@ -16,11 +18,33 @@ const PostCreateForm = () => {
 
   const { title, category, embedId, content } = postData;
 
+  const history = useHistory();
+
   const handleChange = (event) => {
     setPostData({
       ...postData,
       [event.target.name]: event.target.value,
     });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    const formData = new FormData();
+
+    formData.append('title', title)
+    formData.append('category', category)
+    formData.append('embed_id', embedId)
+    formData.append('content', content)
+
+    try {
+      const {data} = await axiosReq.post('/posts/', formData);
+      history.push(`/posts/${data.id}`);
+    } catch(err) {
+      console.log(err)
+      if (err.response?.status !== 401){
+        setErrors(err.response?.data)
+      }
+    }
   };
 
 
@@ -51,7 +75,7 @@ const PostCreateForm = () => {
           </div>
 
           <div>
-            <Form className={`${styles.Form} mx-auto`}>
+            <Form onSubmit={handleSubmit} className={`${styles.Form} mx-auto`}>
               <Form.Group controlId="title">
                 <Form.Label className={styles.Label}>Title</Form.Label>
                 <Form.Control
