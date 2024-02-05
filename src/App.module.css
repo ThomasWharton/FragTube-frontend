@@ -2,8 +2,15 @@
     font-family: "Play", sans-serif;
     background-color: #E4E4E4;
     min-height: 100vh;
+    color: #fff
 }
 
 .Main {
     padding-top: 84px;
+}
+
+.Content {
+    background-color: #808C8C;
+    padding: 10px;
+    border-radius: 2px;
 }

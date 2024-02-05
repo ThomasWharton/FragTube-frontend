@@ -1,0 +1,40 @@
+.Post {
+  background-color: #808C8C;  
+  border-radius: 2px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.Link {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.Link:hover {
+    text-decoration: none;
+    color: #FF0000;
+}
+
+.Video {
+  margin: 0 5px;
+  padding: 10px;
+}
+
+.Post figure,
+h5 {
+  margin: 0 0;
+}
+
+.Heart {
+  color: #FF0000;
+}
+
+.Heart:hover {
+  color: #2142b2;
+}
+
+.HeartOutline:hover {
+  color: #f85032;
+}
