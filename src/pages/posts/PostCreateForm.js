@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "../../styles/PostCreateForm.module.css";
 
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
 
 const PostCreateForm = () => {
+  const [errors, setErrors] = useState({});
+
+  const [postData, setPostData] = useState({
+    title: "",
+    category: "",
+    embedId: "",
+    content: "",
+  });
+
+  const { title, category, embedId, content } = postData;
+
+  const handleChange = (event) => {
+    setPostData({
+      ...postData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+
   return (
     <Row>
       <Col className="my-auto mx-auto py-2 p-md-2" md={12}>
@@ -40,6 +59,20 @@ const PostCreateForm = () => {
                   type="text"
                   placeholder="Title"
                   name="title"
+                  value={title}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+              <Form.Group controlId="category">
+                <Form.Label className={styles.Label}>Game</Form.Label>
+                <Form.Control
+                  className={styles.Input}
+                  type="text"
+                  placeholder="Game"
+                  name="category"
+                  value={category}
+                  onChange={handleChange}
                 />
               </Form.Group>
 
@@ -50,6 +83,8 @@ const PostCreateForm = () => {
                   type="text"
                   placeholder="Youtube embed ID"
                   name="embedId"
+                  value={embedId}
+                  onChange={handleChange}
                 />
               </Form.Group>
 
@@ -60,6 +95,8 @@ const PostCreateForm = () => {
                   as="textarea"
                   rows={6}
                   name="content"
+                  value={content}
+                  onChange={handleChange}
                 />
               </Form.Group>
 
