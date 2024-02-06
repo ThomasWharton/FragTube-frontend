@@ -19,7 +19,6 @@ function PostPage() {
           ])
           setPost({results: [post]})
           setIsLoaded(true)
-          console.log(post)
         } catch(err) {
           console.log(err)
         }
