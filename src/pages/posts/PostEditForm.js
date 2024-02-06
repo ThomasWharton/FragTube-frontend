@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "../../styles/PostCreateEditForm.module.css";
 
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 
-const PostCreateForm = () => {
+const PostEditForm = () => {
   const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
@@ -19,6 +19,23 @@ const PostCreateForm = () => {
   const { title, category, embedId, content } = postData;
 
   const history = useHistory();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/posts/${id}/`);
+        const embedId = data.embed_id;
+        const { title, category, content, is_owner } = data;
+
+        is_owner ? setPostData({ title, category, embedId, content }) : history.push("/");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [history, id]);
 
   const handleChange = (event) => {
     setPostData({
@@ -37,8 +54,8 @@ const PostCreateForm = () => {
     formData.append("content", content);
 
     try {
-      const { data } = await axiosReq.post("/posts/", formData);
-      history.push(`/posts/${data.id}`);
+      await axiosReq.put(`/posts/${id}`, formData);
+      history.push(`/posts/${id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -51,7 +68,7 @@ const PostCreateForm = () => {
     <Row>
       <Col className="my-auto mx-auto py-2 p-md-2" md={12}>
         <Container>
-          <h1 className={styles.Header}>Create Post</h1>
+          <h1 className={styles.Header}>Edit Post</h1>
 
           <Row className={styles.Content}>
             <div className={styles.Info}>
@@ -71,9 +88,18 @@ const PostCreateForm = () => {
                 Embed Id for this example would be <strong>dQw4w9WgXcQ</strong>
               </p>
               <h4 className={styles.Beware}>Beware!</h4>
-              <p>If the video in question has been watched to a certain timestamp, the url may look different.</p>
-              <p>https://www.youtube.com/watch?v=<strong>0F0xtWjLgHA</strong>&t=5s</p>
-              <p>In the above example, there is some extra characters at the end of url to signify the timestamp.</p>
+              <p>
+                If the video in question has been watched to a certain
+                timestamp, the url may look different.
+              </p>
+              <p>
+                https://www.youtube.com/watch?v=<strong>0F0xtWjLgHA</strong>
+                &t=5s
+              </p>
+              <p>
+                In the above example, there is some extra characters at the end
+                of url to signify the timestamp.
+              </p>
               <p>Be sure not to include the timestamp characters.</p>
             </div>
 
@@ -147,7 +173,7 @@ const PostCreateForm = () => {
 
                 <Row>
                   <Button className={`${styles.Button} mx-auto`} type="submit">
-                    Create Post
+                    Edit Post
                   </Button>
                   <Button
                     className={`${styles.Button} mx-auto`}
@@ -165,4 +191,4 @@ const PostCreateForm = () => {
   );
 };
 
-export default PostCreateForm;
+export default PostEditForm;
