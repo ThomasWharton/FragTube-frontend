@@ -38,3 +38,15 @@ h5 {
 .HeartOutline:hover {
   color: #f85032;
 }
+
+i {
+  margin-right: 5px;
+}
+
+.Comment {
+  color: #fff;
+}
+
+.Comment:hover {
+  color: #2142b2;
+}
