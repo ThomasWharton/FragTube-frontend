@@ -20,22 +20,22 @@ const LogInForm = () => {
 
   const history = useHistory();
 
-  const handleChange = async (event) => {
-    setLogInData({
-      ...logInData,
-      [event.target.name]: event.target.value,
-    });
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", logInData);
       setCurrentUser(data.user);
-      history.push("/");
+      history.goBack();
     } catch (err) {
       setErrors(err.response?.data);
     }
+  };
+  
+  const handleChange = async (event) => {
+    setLogInData({
+      ...logInData,
+      [event.target.name]: event.target.value,
+    });
   };
 
   return (
@@ -62,7 +62,7 @@ const LogInForm = () => {
               </Alert>
             ))}
 
-            <Form.Group controlId="password1">
+            <Form.Group controlId="password">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
                 className={styles.Input}

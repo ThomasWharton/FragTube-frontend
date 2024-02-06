@@ -17,7 +17,7 @@ function PostPage() {
         try {
           const [{data: post}] = await Promise.all([
             await axiosReq.get(`/posts/${id}`)
-          ])
+          ]);
           setPost({results: [post]})
           setIsLoaded(true)
         } catch(err) {
@@ -36,7 +36,7 @@ function PostPage() {
         </Col>
         <Col className="py-2 p-0 p-lg-2" lg={8}>
           <p>Popular profiles for mobile</p>
-          <Post {...post.results[0]} setPosts={setPost} PostPage />
+          <Post {...post.results[0]} setPosts={setPost} postPage />
           <Container className={appStyles.Content}>Comments</Container>
         </Col>
         

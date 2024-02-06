@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../../styles/Post.module.css";
 import {
   Row,
@@ -76,7 +76,7 @@ const Post = (props) => {
             {owner}
           </Link>
           <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
+            <span className={styles.Updated}>{updated_at}</span>
             {is_owner && postPage && <MoreDropdown />}
           </div>
         </Media>
