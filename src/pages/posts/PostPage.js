@@ -5,6 +5,7 @@ import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Post from "./Post";
+import Asset from "../../components/Asset";
 
 function PostPage() {
   const { id } = useParams();
@@ -42,7 +43,7 @@ function PostPage() {
       </Row>
     );
   }
-  return null;
+  return <Asset spinner />;
   
 }
 
