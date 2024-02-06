@@ -13,6 +13,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
 import YoutubeEmbed from "../../components/YoutubeEmbed";
 import { axiosReq } from "../../api/axiosDefaults";
+import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Post = (props) => {
   const {
@@ -76,7 +77,7 @@ const Post = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && postPage && "..."}
+            {is_owner && postPage && <MoreDropdown />}
           </div>
         </Media>
       </Card.Body>
@@ -84,7 +85,9 @@ const Post = (props) => {
         <YoutubeEmbed embedId={embed_id} />
       </Card.Body>
       <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
+        <Link to={`/posts/${id}`} className={styles.Link}>
+          {title && <Card.Title className="text-center">{title}</Card.Title>}
+        </Link>
         {content && <Card.Text>{content}</Card.Text>}
         <Row>
           <Col>
