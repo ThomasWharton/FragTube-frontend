@@ -50,3 +50,9 @@
     color: #FF0000;
     max-height: 50px;
 }
+
+.Header {
+    color: #FF0000;
+    text-align: center;
+    font-weight: bold;
+}

@@ -5,8 +5,10 @@ import styles from "../../styles/RegisterLogInForm.module.css";
 
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
+import { useRedirect } from "../../hooks/useRedirect";
 
 const RegisterForm = () => {
+  useRedirect('loggedIn')
   const [registerData, setRegisterData] = useState({
     username: "",
     password1: "",

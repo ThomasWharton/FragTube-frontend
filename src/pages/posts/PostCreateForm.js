@@ -5,8 +5,10 @@ import styles from "../../styles/PostCreateEditForm.module.css";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router";
+import { useRedirect } from "../../hooks/useRedirect";
 
 const PostCreateForm = () => {
+  useRedirect('loggedOut');
   const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
