@@ -100,12 +100,16 @@ const ProfileEditForm = () => {
           {message}
         </Alert>
       ))}
-      <Button className={appStyles.Button} onClick={() => history.goBack()}>
-        cancel
-      </Button>
+      <div className="d-flex justify-content-around">
       <Button className={appStyles.Button} type="submit">
         save
       </Button>
+      <Button className={appStyles.Button} onClick={() => history.goBack()}>
+        cancel
+      </Button>
+      </div>
+      
+      
     </>
   );
 
