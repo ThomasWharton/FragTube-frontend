@@ -26,3 +26,17 @@
 .Active i {
     color: #FF0000;
 }
+
+@media (max-width: 576px) {
+    .CreatePost {
+        display: none;
+    }
+
+    .Logo {
+        font-size: 16px;
+    }
+    
+    .Burger {
+        font-size: 10px;
+    }
+}

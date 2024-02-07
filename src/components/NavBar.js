@@ -31,7 +31,7 @@ const NavBar = () => {
       className={styles.Link}
       activeClassName={styles.Active}
     >
-      <i className="fas fa-plus-square"></i> Create Post
+      <i className="fas fa-plus-square"></i> <span className={styles.CreatePost}>Create Post</span>
     </NavLink>
   );
 
@@ -96,6 +96,7 @@ const NavBar = () => {
         </NavLink>
         {currentUser && createPostIcon}
         <Navbar.Toggle
+          className={styles.Burger}
           ref={ref}
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
