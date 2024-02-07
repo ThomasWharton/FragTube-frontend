@@ -67,3 +67,15 @@
   box-shadow: none;
   border: none;
 }
+
+.Link {
+  color: #FFF;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.Link:hover {
+  text-decoration: none;
+  color: #FF0000;
+}
