@@ -36,7 +36,7 @@ export const ProfileDataProvider = ({ children }) => {
 
     return (
         <ProfileDataContext.Provider value={profileData}>
-          <SetProfileDataContext.Provider value={{setProfileData}}>
+          <SetProfileDataContext.Provider value={setProfileData}>
             {children}
           </SetProfileDataContext.Provider>
         </ProfileDataContext.Provider>
