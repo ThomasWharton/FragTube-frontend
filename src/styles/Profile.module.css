@@ -47,19 +47,23 @@
 .UnfollowButton:hover {
   background-color: #fff;
   border: 1px solid #ff0000;
+  color: #FF0000;
   cursor: pointer;
 }
 
 .UnfollowButton:active {
   background-color: #fff !important;
+  color: #FF0000;
 }
 
 .UnfollowButton:hover:active {
   background-color: #fff !important;
+  color: #FF0000;
 }
 
 .UnfollowButton:focus {
   background-color: #fff;
+  color: #FF0000;
   box-shadow: none;
   border: none;
 }

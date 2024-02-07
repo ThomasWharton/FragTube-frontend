@@ -19,17 +19,20 @@ function PostPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
-  const [comments, setComments] = useState({ results: [] });
+  const [postComments, setPostComments] = useState({ results: [] });
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: post }, { data: comments }] = await Promise.all([
+        const [{ data: post }, { data: postComments }] = await Promise.all([
           axiosReq.get(`/posts/${id}`),
           axiosReq.get(`/comments/?post=${id}`),
         ]);
         setPost({ results: [post] });
-        setComments(comments);
+        setPostComments((prevComments) => ({
+          ...prevComments,
+          [id]: postComments,
+        }));
         setIsLoaded(true);
       } catch (err) {
         console.log(err);
@@ -55,25 +58,25 @@ function PostPage() {
                 profileImage={profile_image}
                 post={id}
                 setPost={setPost}
-                setComments={setComments}
+                setComments={setPostComments}
               />
-            ) : comments.results.length ? (
+            ) : postComments.results.length ? (
               "Comments"
             ) : null}
-            {comments.results.length ? (
+            {postComments.results.length ? (
               <InfiniteScroll
-                children={comments.results.map((comment) => (
+                children={postComments.results.map((comment) => (
                   <Comment
                     key={comment.id}
                     {...comment}
                     setPost={setPost}
-                    setComments={setComments}
+                    setComments={setPostComments}
                   />
                 ))}
-                dataLength={comments.results.length}
+                dataLength={postComments.results.length}
                 loader={<Asset spinner />}
-                hasMore={!!comments.next}
-                next={() => fetchMoreData(comments, setComments)}
+                hasMore={!!postComments[id].next}
+                next={() => fetchMoreData(postComments[id], setPostComments)}
               />
             ) : currentUser ? (
               <span>No comments yet, be the first to comment!</span>
