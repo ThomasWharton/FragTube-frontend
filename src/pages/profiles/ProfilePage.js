@@ -19,6 +19,7 @@ import Post from "../posts/Post";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -56,6 +57,7 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
+      {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <Row noGutters className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
           <Image
@@ -85,11 +87,17 @@ function ProfilePage() {
           {currentUser &&
             !is_owner &&
             (profile?.following_id ? (
-              <Button className={styles.UnfollowButton} onClick={() => handleUnfollow(profile)}>
+              <Button
+                className={styles.UnfollowButton}
+                onClick={() => handleUnfollow(profile)}
+              >
                 unfollow
               </Button>
             ) : (
-              <Button className={styles.FollowButton} onClick={() => handleFollow(profile)}>
+              <Button
+                className={styles.FollowButton}
+                onClick={() => handleFollow(profile)}
+              >
                 follow
               </Button>
             ))}
