@@ -11,6 +11,7 @@
   padding: 4px 10px;
   min-width: 75px;
   margin: 5px;
+  text-transform: uppercase;
 }
 
 .Button:hover {
