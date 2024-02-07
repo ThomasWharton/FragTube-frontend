@@ -23,10 +23,13 @@ import NoResults from "../../assets/no-results.png";
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profilePosts, setProfilePosts] = useState({ results: [] });
+
   const currentUser = useCurrentUser();
   const { id } = useParams();
-  const setProfileData = useSetProfileData();
+
+  const { setProfileData, handleFollow } = useSetProfileData();
   const { pageProfile } = useProfileData();
+
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
@@ -86,7 +89,7 @@ function ProfilePage() {
                 unfollow
               </Button>
             ) : (
-              <Button className={styles.FollowButton} onClick={() => {}}>
+              <Button className={styles.FollowButton} onClick={() => handleFollow(profile)}>
                 follow
               </Button>
             ))}
