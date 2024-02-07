@@ -1,0 +1,65 @@
+.WordBreak {
+  word-break: break-all;
+}
+
+.FollowButton {
+  font-size: 12px;
+  color: #fff;
+  background-color: #ff0000;
+  border: 1px solid #ff0000;
+  border-radius: 16px;
+  text-transform: uppercase;
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+.FollowButton:hover {
+  background-color: #ff0000;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.FollowButton:active {
+  background-color: #ff0000 !important;
+}
+
+.FollowButton:hover:active {
+  background-color: #ff0000 !important;
+}
+
+.FollowButton:focus {
+  background-color: #ff0000;
+  box-shadow: none;
+  border: none;
+}
+
+.UnfollowButton {
+  font-size: 12px;
+  color: #ff0000;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 16px;
+  text-transform: uppercase;
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+.UnfollowButton:hover {
+  background-color: #fff;
+  border: 1px solid #ff0000;
+  cursor: pointer;
+}
+
+.UnfollowButton:active {
+  background-color: #fff !important;
+}
+
+.UnfollowButton:hover:active {
+  background-color: #fff !important;
+}
+
+.UnfollowButton:focus {
+  background-color: #fff;
+  box-shadow: none;
+  border: none;
+}
