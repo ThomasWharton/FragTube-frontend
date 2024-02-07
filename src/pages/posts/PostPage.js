@@ -35,7 +35,7 @@ function PostPage() {
         }));
         setIsLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 

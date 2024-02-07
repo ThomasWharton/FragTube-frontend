@@ -27,7 +27,7 @@ function PostsPage({ message, filter = "" }) {
         setPosts(data);
         setIsLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
