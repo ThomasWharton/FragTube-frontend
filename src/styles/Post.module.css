@@ -54,3 +54,7 @@ i {
 .Comment:hover {
   color: #2142b2;
 }
+
+.AvgRating {
+  color: #FF0000;
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../../styles/Post.module.css";
 import {
   Row,
@@ -31,11 +31,14 @@ const Post = (props) => {
     updated_at,
     postPage,
     setPosts,
+    rating_id,
+    average_rating,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
+
 
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
@@ -137,7 +140,9 @@ const Post = (props) => {
             {likes_count}
           </Col>
           <Col>
-            <Rating />
+            <Rating id={rating_id} />
+            <i className={`fa fa-star ${styles.AvgRating}`} />
+            {average_rating}
           </Col>
           <Col>
             <Link to={`/posts/${id}`}>

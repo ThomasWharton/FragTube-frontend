@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styles from "../styles/Rating.module.css";
+import { axiosReq } from "../api/axiosDefaults";
 
 const Rating = () => {
+
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
 
@@ -11,6 +13,7 @@ const Rating = () => {
         const ratingValue = i + 1;
 
         return (
+
           <label>
             <input
               type="radio"
@@ -28,7 +31,9 @@ const Rating = () => {
             />
           </label>
         );
+        
       })}
+      
     </div>
   );
 };
