@@ -14,6 +14,7 @@ import { Link, useHistory } from "react-router-dom";
 import YoutubeEmbed from "../../components/YoutubeEmbed";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import Rating from "../../components/Rating";
 
 const Post = (props) => {
   const {
@@ -134,6 +135,9 @@ const Post = (props) => {
               </OverlayTrigger>
             )}
             {likes_count}
+          </Col>
+          <Col>
+            <Rating />
           </Col>
           <Col>
             <Link to={`/posts/${id}`}>
