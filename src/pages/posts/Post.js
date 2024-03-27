@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "../../styles/Post.module.css";
 import {
   Row,
@@ -84,6 +84,7 @@ const Post = (props) => {
       // console.log(err);
     }
   };
+  
 
   return (
     <Card className={styles.Post}>
@@ -140,7 +141,7 @@ const Post = (props) => {
             {likes_count}
           </Col>
           <Col>
-            <Rating id={rating_id} />
+            <Rating id={rating_id} post_id={id} />
             <i className={`fa fa-star ${styles.AvgRating}`} />
             {average_rating}
           </Col>
