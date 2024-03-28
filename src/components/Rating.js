@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/Rating.module.css";
 import { axiosReq } from "../api/axiosDefaults";
 
+// The basic component code came from this youtube tutorial - https://www.youtube.com/watch?v=eDw46GYAIDQ&t
+
 const Rating = (props) => {
   const { post_id, userRating, updateRating } = props;
 

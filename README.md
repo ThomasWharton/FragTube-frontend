@@ -283,6 +283,7 @@ The comment component displays all comments for each post on the individual post
 #### Rating
 
 The rating component allows authenticated users to rate each post.
+The basic code for the rating component came from this [tutorial](https://www.youtube.com/watch?v=eDw46GYAIDQ&t).
 
 ### Wireframes
 
@@ -693,6 +694,8 @@ SECRET_KEY = Another secret key here - Make sure it is different to the one in y
 The base for this project was built following the moments walkthrough project from CodeInstitute. The project was altered through development to meet the site goals.
 
 The youtube embed component used in the project was found here: [Youtube Embed](https://dev.to/bravemaster619/simplest-way-to-embed-a-youtube-video-in-your-react-app-3bk2).
+
+The basic code for the rating component came from this [tutorial](https://www.youtube.com/watch?v=eDw46GYAIDQ&t).
 
 As always, I want to give my mentor [Simen Daehlin](https://github.com/Eventyret "Simen Daehlin") for his continued support and guidance throughout the course. 
 
