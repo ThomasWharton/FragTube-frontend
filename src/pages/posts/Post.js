@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "../../styles/Post.module.css";
 import {
   Row,
@@ -39,6 +39,42 @@ const Post = (props) => {
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
+  const [userRating, setUserRating] = useState(null);
+  const [averageRating, setAverageRating] = useState(average_rating);
+
+  const fetchRating = useCallback(async () => {
+    try {
+      if (!rating_id) {
+        setUserRating(null);
+        return;
+      }
+      const { data } = await axiosReq.get(`/ratings/${rating_id}`, {
+        post: id,
+      });
+      setUserRating(data.rating);
+    } catch (err) {
+      console.error(err);
+    }
+  }, [id, rating_id]);
+
+  const fetchAverageRating = useCallback(async () => {
+    try {
+      const { data } = await axiosReq.get(`/posts/${id}`);
+      setAverageRating(data.average_rating);
+    } catch (err) {
+      console.log(err)
+    }
+  }, [id]);
+
+  useEffect((averageRating) => {
+    fetchRating();
+    fetchAverageRating(averageRating);
+  }, [fetchRating, fetchAverageRating, rating_id, id]);
+
+  const updateRating = (newRating) => {
+    setUserRating(newRating);
+    fetchAverageRating();
+  };
 
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
@@ -84,7 +120,6 @@ const Post = (props) => {
       // console.log(err);
     }
   };
-  
 
   return (
     <Card className={styles.Post}>
@@ -141,9 +176,15 @@ const Post = (props) => {
             {likes_count}
           </Col>
           <Col>
-            <Rating id={rating_id} post_id={id} setPosts={setPosts} />
+            <Rating
+              key={rating_id}
+              post_id={id}
+              setPosts={setPosts}
+              updateRating={updateRating}
+              userRating={userRating}
+            />
             <i className={`fa fa-star ${styles.AvgRating}`} />
-            {average_rating}
+            {averageRating}
           </Col>
           <Col>
             <Link to={`/posts/${id}`}>
