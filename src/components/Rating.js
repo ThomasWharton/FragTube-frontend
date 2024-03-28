@@ -1,29 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "../styles/Rating.module.css";
 import { axiosReq } from "../api/axiosDefaults";
 
 const Rating = (props) => {
   const { id, post_id, setPosts } = props;
 
-  useEffect(() => {
-    const fetchRating = async () => {
-      try {
-        const { data } = await axiosReq.get(`/ratings/${id}`, {
-          post: post_id,
-        });
-        setRating(data.rating);
-      } catch (err) {
-        // console.log(err);
-      }
-    };
-
-    fetchRating();
+  const fetchRating = useCallback(async () => {
+    try {
+      const { data } = await axiosReq.get(`/ratings/${id}`, {
+        post: post_id,
+      });
+      setRating(data.rating);
+    } catch (err) {
+      // console.log(err);
+    }
   }, [id, post_id]);
 
+  useEffect(() => {
+    fetchRating();
+  }, [fetchRating]);
+
+  
+
   const handleRating = async (ratingValue) => {
+    console.log(ratingValue)
+    setRating(ratingValue);
+    console.log(rating)
     try {
-      setRating(ratingValue);
-      const { data } = await axiosReq.post("/ratings/", { rating: ratingValue, post: post_id });
+      const { data } = await axiosReq.post("/ratings/", { rating: rating, post: post_id });
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
@@ -32,6 +36,7 @@ const Rating = (props) => {
             : post;
         }),
       }));
+      fetchRating();
     } catch (err) {
       // console.log(err);
     }
@@ -42,6 +47,7 @@ const Rating = (props) => {
   const [hover, setHover] = useState(null);
 
   return (
+    
     <div className={styles.Rating}>
       {[...Array(5)].map((star, i) => {
         const ratingValue = i + 1;
@@ -52,7 +58,7 @@ const Rating = (props) => {
               type="radio"
               name="rating"
               value={ratingValue}
-              onClick={handleRating}
+              onClick={() => handleRating(ratingValue)}
             />
             <i
               className={`fa fa-star ${styles.Star}`}

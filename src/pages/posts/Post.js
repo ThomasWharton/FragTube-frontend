@@ -141,7 +141,7 @@ const Post = (props) => {
             {likes_count}
           </Col>
           <Col>
-            <Rating id={rating_id} post_id={id} />
+            <Rating id={rating_id} post_id={id} setPosts={setPosts} />
             <i className={`fa fa-star ${styles.AvgRating}`} />
             {average_rating}
           </Col>
