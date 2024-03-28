@@ -402,13 +402,44 @@ Manual testing has been completed throughout the development process and final c
 | Unauthenticated user <br>unable to rate post                      | Unauthenticated user should not be able to rate post.                      | Log out and try to rate post.                                                                                   | Rating component should not display if not logged in. Instead<br>link to log in page should display.                                   | As expected. |
 | Display average rating<br>icon only if average rating<br>not null | If post has no ratings, no star icon for average rating should<br>display. | Check post with no rating to ensure star icon does not<br>display.                                              | No star icon for average rating should display if no average<br>rating. Instead a message of "No ratings yet!" should be<br>displayed. | As expected. |
 
+### Back End
+
+#### Pylint Testing
+
+Pylint was used to give detailed linting testing results for each folder in my backend workspace. All easily fixed errors where fixed but due to time constraints, some errors had to left in. The results are as follows:
+
+**Comments**
+![Comments](public/documentation/screenshots/pylint-comments.png)
+
+**Followers**
+![Followers](public/documentation/screenshots/pylint-followers.png)
+
+**frag_tube**
+![frag_tube](public/documentation/screenshots/pylint-frag_tube.png)
+
+**Likes**
+![Likes](public/documentation/screenshots/pylint-likes.png)
+
+**Posts**
+![Posts](public/documentation/screenshots/pylint-posts.png)
+
+**Profiles**
+![Profiles](public/documentation/screenshots/pylint-profiles.png)
+
+**Ratings**
+![Ratings](public/documentation/screenshots/pylint-ratings.png)
+
+#### Manual Testing
+
+Manual testing was completed for all CRUD functionality on backend. For every create instances, data was reflected correctly in database. For all update instances, any effected data was updated successfully in the database. For all delete instances, any effected data was removed from the database.
+
 ### Bugs
 
-There is a bug in which all comments for all posts are being displayed on every post instead of only the posts they were originally created from.
+There was a bug in which all comments for all posts are being displayed on every post instead of only the posts they were originally created from.
 
-I tried to fix this issue by adding additional checks and conditions to setting the comments on each post but unfortunately this resulted in no comments being generated at all.
+It was determind that the bug derived from having `filterset` instead of `filterset_fields` in my CommentList view.
 
-Due to time constraints, I was not able to fix this bug.
+[Comment Bug](https://github.com/ThomasWharton/frag-tube/issues/99)
 
 ## Future Development
 
