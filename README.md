@@ -152,6 +152,47 @@ The structure of the site will be split into frontend and backend. The frontend 
 | updated_at | DateTimeField |
 | content    | TextField     |
 
+#### Rating Model
+
+| Object     | Field                |
+|------------|----------------------|
+| owner      | ForeignKey(user)     |
+| post       | ForeignKey(post)     |
+| rating     | PositiveIntegerField |
+| created_at | DateTimeField        |
+| updated_at | DateTimeField        |
+
+### React Components
+
+The front end was built using [React](https://react.dev/ "React"), specifically version 17.0.2. React allows for the creation and implementation of reusable components which can be used to display different features of your site. Components can have states which update depending on user interaction. The main components created for this project are listed below. These components will be discussed further in the features section of this readme.
+
+#### NavBar
+
+The navbar component allows users to easily navigate around the site. The navbar will change depending on whether the user is authenticated or not.
+
+#### Post
+
+The post component displays the content of each post to the user. This component is found reused on multiple pages such as the singular post page, home page and profile page of user who has submitted posts.
+
+#### YoutubeEmbed
+
+The youtube embed component embeds the youtube video in the post component. This takes the embedId posted by the user to embed the video from youtube. This component was taken from this youtube [tutorial](https://dev.to/bravemaster619/simplest-way-to-embed-a-youtube-video-in-your-react-app-3bk2).
+
+#### Profile
+
+The profile component displays the details of each user. Shows details of posts, following/follower/post count.
+
+#### Popular Profiles
+
+The popular profiles component displays a list of the top followed users. This is displayed on most pages of the site.
+
+#### Comment
+
+The comment component displays all comments for each post on the individual post page.
+
+#### Rating
+
+The rating component allows authenticated users to rate each post.
 
 ### Wireframes
 
@@ -275,6 +316,22 @@ Comments will be displayed on the individual post page for users to discuss the 
 **Comments**
 ![Comments](public/documentation/screenshots/comments.png)
 
+### Rating
+
+Logged in users will have the ability to rate posts. When a user submits a rating, the rating component will update to reflect the user's submitted rating. The average rating for the post will also display if not null and update when a new rating is submitted. The rating component will not display if the user is not logged in and instead will return a link to the log in page. If no ratings have been submitted for a post yet and therefore the average rating will be null, a message that there is no ratings yet will be displayed to the user.
+
+**Rated post**<br>
+![Rated Post](public/documentation/screenshots/rated-post.png)
+
+**Post no ratings**<br>
+![Post no ratings](public/documentation/screenshots/post-no-rating.png)
+
+**Rating no current user**<br>
+![Rating no current user](public/documentation/screenshots/rating-nocurrentuser.png)
+
+**No ratings**<br>
+![No ratings](public/documentation/screenshots/no-ratings.png)
+
 ## CRUD Functionality
 
 CRUD functionality is implemented in the backend to allow users on the front end to create, read, update and delete data.
@@ -295,9 +352,15 @@ Logged in users have the ability to update their profile via an edit profile for
 
 Logged in users can create comments on posts they like. The owner of the comment will also have access to edit or delete their comment.
 
+### Rating
+
+Logged in users can create a rating by submitting it on the post of their choosing. Rating can also be updated by submitting a new rating.
+
 ## Testing
 
-### HTML Testing
+### Front End
+
+#### HTML Testing
 
 HTML testing was completed by running the website through [W3C HTML Validator](https://validator.w3.org/). The results were as follows:
 
@@ -306,7 +369,7 @@ HTML testing was completed by running the website through [W3C HTML Validator](h
 
 The validator completed with only info warnings which can safely be ignored.
 
-### CSS Testing
+#### CSS Testing
 
 CSS testing was completed by running the website through [W3C CSS Validator](https://jigsaw.w3.org/css-validator/). The results were as follows:
 
@@ -315,7 +378,7 @@ CSS testing was completed by running the website through [W3C CSS Validator](htt
 
 The validator produced no CSS errors.
 
-### Manual Testing
+#### Manual Testing
 
 Manual testing has been completed throughout the development process and final checks once completed. The results are shown in the table below.
 
@@ -425,7 +488,7 @@ Cloning allows you to download a local version of a chosen repository. Cloning c
 6. Select newly created instance.
 7. Copy and make note of instance URL as this will be added to your env.py file.
 
-#### #### Requirements
+#### Requirements
 
 The requirements for this particular project are as follows:<br>
 
