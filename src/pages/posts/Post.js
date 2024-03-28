@@ -176,13 +176,19 @@ const Post = (props) => {
             {likes_count}
           </Col>
           <Col>
-            <Rating
+            {currentUser ? (
+              <Rating
               key={rating_id}
               post_id={id}
               setPosts={setPosts}
               updateRating={updateRating}
               userRating={userRating}
-            />
+            />            
+            ) : (
+              <Link to="/login" className={styles.Link}>
+                <p>Log in to rate this post!</p>
+              </Link>              
+            )}
             <i className={`fa fa-star ${styles.AvgRating}`} />
             {averageRating}
           </Col>
