@@ -189,7 +189,11 @@ const Post = (props) => {
                 <p>Log in to rate this post!</p>
               </Link>              
             )}
-            <i className={`fa fa-star ${styles.AvgRating}`} />
+            {averageRating ? (
+              <i className={`fa fa-star ${styles.AvgRating}`} />              
+            ) : (
+              <p>No ratings yet!</p>
+            )}
             {averageRating}
           </Col>
           <Col>
