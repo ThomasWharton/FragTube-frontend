@@ -139,6 +139,7 @@ const ProfileEditForm = () => {
               </div>
               <Form.File
                 id="image-upload"
+                className="d-none"
                 ref={imageFile}
                 accept="image/*"
                 onChange={(e) => {
