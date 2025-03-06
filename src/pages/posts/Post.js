@@ -175,7 +175,7 @@ const Post = (props) => {
             )}
             {likes_count}
           </Col>
-          <Col>
+          <Col className={styles.RatingCol}>
             {currentUser ? (
               <Rating
               key={rating_id}

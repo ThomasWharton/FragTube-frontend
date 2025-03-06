@@ -58,3 +58,7 @@ i {
 .AvgRating {
   color: #FF0000;
 }
+
+.RatingCol {
+  min-width: 160px;
+}
